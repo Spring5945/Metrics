@@ -36,11 +36,10 @@ public class ThreadPoolMonitorProcessor {
         }
     }
 
-
     @Scheduled(fixedRate = 1000)
     public void threadPoolMetricsRecord() {
         // 线程池指标数据
-        ThreadPoolRegistrar.CONTAINER.forEach(threadPoolMonitorConsumer());
+        ThreadPoolRegistrar.threadPools().forEach(threadPoolMonitorConsumer());
     }
 
     private BiConsumer<String, ThreadPoolExecutor> threadPoolMonitorConsumer() {

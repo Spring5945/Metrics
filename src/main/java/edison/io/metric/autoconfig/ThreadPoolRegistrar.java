@@ -21,7 +21,7 @@ public class ThreadPoolRegistrar implements ApplicationRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ThreadPoolRegistrar.class);
 
-    public static Map<String, ThreadPoolExecutor> CONTAINER = Maps.newConcurrentMap();
+    private static Map<String, ThreadPoolExecutor> CONTAINER = Maps.newConcurrentMap();
 
     public static void register(String threadPoolName, ThreadPoolExecutor executorService) {
         Preconditions.checkNotNull(executorService);
@@ -30,6 +30,10 @@ public class ThreadPoolRegistrar implements ApplicationRunner {
 
     public static ThreadPoolExecutor getInstance(String threadPoolName) {
         return CONTAINER.get(threadPoolName);
+    }
+
+    public static Map<String, ThreadPoolExecutor> threadPools(){
+        return CONTAINER;
     }
 
     @Override

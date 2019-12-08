@@ -8,21 +8,6 @@ import org.apache.commons.lang3.Validate;
 import java.util.concurrent.*;
 import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
 
-/**
- * ThreadPool创建的工具类.
- * <p>
- * 对比JDK Executors中的newFixedThreadPool(), newCachedThreadPool(),newScheduledThreadPool, 提供更多有用的配置项.
- * <p>
- * 另包含了移植自Tomcat的QueuableCachedPool.
- * <p>
- * 使用示例如下：
- * <p>
- * <pre>
- * ExecutorService ExecutorService = new FixedThreadPoolBuilder().setPoolSize(10).build();
- * </pre>
- * <p>
- * 参考文章 《Java ThreadPool的正确打开方式》http://calvin1978.blogcn.com/articles/java-threadpool.html
- */
 public class ThreadPoolBuilder {
 
     private static RejectedExecutionHandler defaultRejectHandler = new AbortPolicy();
